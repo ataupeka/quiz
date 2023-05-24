@@ -121,3 +121,230 @@ if(completedAnswers == 0) {
 
 
 };
+     
+     
+     
+     completedAnswers.push(indexOfQuestion);
+
+};
+
+const checkAnswer = element => {
+
+
+    if(element.target.dataset.id == questions[indexOfQuestion].rightAnswer) {
+        element.target.classList.add('correct');
+        updateAnswerTracker('correct');
+        score++;
+
+    } else{
+        element.target.classList.add('wrong');
+        updateAnswerTracker('wrong');
+
+    }
+
+    disabledOptions();
+
+}
+
+
+const disabledOptions = () => {
+    optionElements.forEach(item => {
+        item.classList.add('disabled');
+        if(item.dataset.id == questions[indexOfQuestion].rightAnswer) {
+           item.classList.add('correct');
+        }
+
+    })
+}
+
+
+const enableOptions = () => {
+    optionElements.forEach(item => {
+        item.classList.remove('disabled', 'correct', 'wrong');
+
+    })
+
+};
+
+
+const answerTracker = () => {
+questions.forEach(() => {
+ const div = document.createElement('div');
+ answersTracker.appendChild(div);
+    })
+};
+
+
+const updateAnswerTracker = status => {
+    answersTracker.children[indexOfPage -1].classList.add(`${status}`);
+};
+
+
+const validate = () => {
+    if(optionElements[0].classList.contains('disabled')) {
+        alert('Please choose an answer');
+    } else {
+        randomQuestion();
+        enableOptions();
+    }
+};
+
+
+
+
+
+
+
+btnNext.addEventListener('click', validate);
+
+
+
+
+
+for(option of optionElements) {
+    option.addEventListener('click', event => checkAnswer(event));
+
+
+}
+
+
+
+const quizOver = () => {
+    document.querySelector('.quiz-over-modal').classList.add('add');
+    correctAnswer.innerHTML = score;
+    numberOfAllQuestion2.innerHTML = questions.length;
+};
+
+
+const tryAgain =() => {
+    window.location.reload();
+};
+
+
+btnTryAgain.addEventListener('click', tryAgain);
+
+
+
+
+window.addEventListener('load', () => {
+    randomQuestion();
+    answerTracker();
+})
+
+
+
+    completedAnswers.push(indexOfQuestion);
+
+};
+
+const checkAnswer = element => {
+
+
+    if(element.target.dataset.id == questions[indexOfQuestion].rightAnswer) {
+        element.target.classList.add('correct');
+        updateAnswerTracker('correct');
+        score++;
+
+    } else{
+        element.target.classList.add('wrong');
+        updateAnswerTracker('wrong');
+
+    }
+
+    disabledOptions();
+
+}
+
+
+const disabledOptions = () => {
+    optionElements.forEach(item => {
+        item.classList.add('disabled');
+        if(item.dataset.id == questions[indexOfQuestion].rightAnswer) {
+           item.classList.add('correct');
+        }
+
+    })
+}
+
+
+const enableOptions = () => {
+    optionElements.forEach(item => {
+        item.classList.remove('disabled', 'correct', 'wrong');
+
+    })
+
+};
+
+
+const answerTracker = () => {
+questions.forEach(() => {
+ const div = document.createElement('div');
+ answersTracker.appendChild(div);
+    })
+};
+
+
+const updateAnswerTracker = status => {
+    answersTracker.children[indexOfPage -1].classList.add(`${status}`);
+};
+
+
+const validate = () => {
+    if(optionElements[0].classList.contains('disabled')) {
+        alert('Please choose an answer');
+    } else {
+        randomQuestion();
+        enableOptions();
+    }
+};
+
+
+
+
+
+
+
+btnNext.addEventListener('click', validate);
+
+
+
+
+
+for(option of optionElements) {
+    option.addEventListener('click', event => checkAnswer(event));
+
+
+}
+
+
+
+const quizOver = () => {
+    document.querySelector('.quiz-over-modal').classList.add('add');
+    correctAnswer.innerHTML = score;
+    numberOfAllQuestion2.innerHTML = questions.length;
+};
+
+
+const tryAgain =() => {
+    window.location.reload();
+};
+
+
+btnTryAgain.addEventListener('click', tryAgain);
+
+
+
+
+window.addEventListener('load', () => {
+    randomQuestion();
+    answerTracker();
+})
+
+
+
+
+
+
+
+
+
